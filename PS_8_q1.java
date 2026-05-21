@@ -1,39 +1,43 @@
-// Create a class employee with following properties and method.
-// salary (property) (int)
-// getSalary (method) (returning int)
-// name (property) (String)
-// getName (method) (returning String)
-// setName (method) (changing name)
+/*
+Create a class Employee with following properties and methods.
+- salary (property) (int)
+- getSalary (method) (returning int)
+- name (property) (string)
+- getName (method) (returning string)
+- setName (method) (changing name)
+*/
+import java.util.Scanner;
 
-public class PS_8_q1 {
-    public static void main(String[] args) {
-        int salary;
-        String name;
-
-        Employee emp = new Employee();
-        salary = emp.getSalary();
-        System.out.println("Salary: "+salary);
-
-        emp.setName("Hakari");
-        name = emp.getName();
-        System.out.println("Name: "+name);
-
-    }
-}
-
-class Employee {
-    int salary=1_45_000;
+class Employee{
+    int salary;
     String name;
 
-    int getSalary(){
+    public int getSalary() {
         return salary;
     }
 
-    String getName(){
+    public String getName() {
         return name;
     }
 
-    void setName(String s){
-        name = s;
+    public void setName( String newName){
+        name = newName;
+    }
+}
+public class PS_8_q1 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Creating an employee object
+        Employee emp = new Employee();
+        emp.salary = 1_32_0000;
+        System.out.print("Enter a name: ");
+        String name = sc.next();
+
+        emp.setName(name);
+
+        System.out.printf("Hello my name is %s and my salary is %d ",emp.name,emp.salary);
+        
+        sc.close();
     }
 }

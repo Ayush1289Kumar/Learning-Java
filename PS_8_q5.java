@@ -1,39 +1,49 @@
-// Create a class TommyVecetti for Rockstar games capable of 
-// hitting(print hitting...), running,firing, etc.
+/*
+Create a class TommyVecetti for Rockstar games
+capable of hitting(print hitting...),running,firing etc.
+*/
+
 import java.util.Scanner;
 
+class TommyVecetti{
+    String name;
+    int level;
+
+    public TommyVecetti(String name, int level){
+        this.name = name;
+        this.level = level;
+    }
+
+    public void hit(){
+        System.out.println(this.name+" is hitting...");
+    }
+
+    public void run(){
+        System.out.println(this.name+" is running...");
+    }
+
+    public void fire(){
+        System.out.println(this.name+" is firing...");
+    }
+
+}
 public class PS_8_q5 {
     public static void main(String[] args) {
-        
         Scanner sc = new Scanner(System.in);
+        String name;
+        int level;
 
-        System.out.print("Enter the name of character: ");
-        String character = sc.nextLine();
+        System.out.print("Enter name: ");
+        name = sc.next();
 
-        TommyVecetti new_character = new TommyVecetti(character);
+        System.out.print("Enter level: ");
+        level = sc.nextInt();
 
-        new_character.hitting();
-        new_character.running();
-        new_character.firing();
-    }
-}
+        TommyVecetti player = new TommyVecetti(name, level);
 
-class TommyVecetti{
-    String character;
+        player.hit();
+        player.run();
+        player.fire();
 
-    public TommyVecetti(String character){
-        this.character = character;
-    }
-
-    void hitting(){
-        System.out.println(character+" is Hitting...");
-    }
-
-    void running(){
-        System.out.println(character+" is Running...");
-    }
-
-    void firing(){
-        System.out.println(character+" is Firing...");
     }
 }

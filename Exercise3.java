@@ -1,70 +1,68 @@
-        /*
-        Creat a class Game, which allows a user to play "Guess the number".
-        game once, Game should have the following methods:
-        1. Constructor to generate the random number.
-        2. takeUserInput() to take the user input.
-        3. isCorrectNumber() to detect whether the number entered by the user is true.
-        4. getter and setter for noOfGuesses
+/*
+Create a class Game, which allows a user to play
+"Guess the Number" game once.
+Game should have the following methods :
+- Constructor to generate the random number
+- takeUserInput() to take a user input of number
+- isCorrectNumber() to detect whether the entered number by the user is true
+- getter and setter for noOfGuesses.
 
-        user properties such as noOfGuesses(int), etc to get this task done!
-        */
-
+Use properties such as noOfGuesses(int). etc to get this task done!
+*/
 import java.util.Random;
 import java.util.Scanner;
 
-
 class Game{
-    int cpu,num;
-    int noOfGuesses=0;
-    Scanner sc = new Scanner(System.in);
-    public Game() {
+    private int noOfGuesses = 0;
+    int score = (100-noOfGuesses)/100;
+    int cpu_number,user_number;
+
+    public Game(){
         Random rand = new Random();
-        cpu = rand.nextInt(100)+1;
+        this.cpu_number= rand.nextInt(100)+1;
     }
 
-    void  takeUserInput(){
-
-        System.out.print("\nEnter a number (1-100): ");
-        num = sc.nextInt();
+    public void takeUserInput(){
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        this.user_number = sc.nextInt();
     }
 
-    boolean isCorrectNumber(){
-        return num==cpu;
+    public boolean isCorrectNumber(){
+        return cpu_number==user_number;
     }
-    int get_noOfGuesses(){
+
+    public int getNoOfGuesses(){
         return noOfGuesses;
     }
 
-    void set_noOfGuesses(int n){
-        noOfGuesses = n;
+    public void setNoOfGuesses(int num){
+        noOfGuesses = num;
     }
+
 }
 public class Exercise3 {
     public static void main(String[] args) {
-        
-        Game game = new Game();
-        int guess = game.get_noOfGuesses();
+        Game newGame = new Game();
+        int guess = newGame.getNoOfGuesses();
         while (true) { 
-            game.takeUserInput();
-            guess++;
-            game.set_noOfGuesses(guess);
+            newGame.takeUserInput();
+            
+            if(newGame.user_number > newGame.cpu_number){
+                System.out.println("Your number is greater than the cpu number.");
+                newGame.setNoOfGuesses(++guess);
+            }
 
-            if (game.isCorrectNumber()){
-                System.out.println("\nCongratulation you won the game!");
-                System.out.println("Your Score: "+(100-guess)+"/100");
+            else if(newGame.user_number < newGame.cpu_number){
+                System.out.println("Your number is smaller than the cpu number");
+                newGame.setNoOfGuesses(++guess);
+            }
+
+            if (newGame.isCorrectNumber()) {
+                System.out.println("Congratulations you won the game!!!");
                 break;
             }
-            
-            if (game.num > game.cpu){
-                System.out.println("Guessed number is greater than the cpu number.\n");
-            }
-
-            else if(game.num < game.cpu){
-                System.out.println("Guessed number is smaller than the cpu number.\n");
-            }
-
-
         }
-
+        System.out.println("Your Score: "+(100-guess));
     }
 }

@@ -47,8 +47,6 @@ class Tv implements TvRemote,SmartTvRemote{
     public void networkConnect(String wifi) {
         System.out.println("Connecting network to "+wifi);
     }
-    
-    
 
 }
 public class PS_11_q6_7 {
